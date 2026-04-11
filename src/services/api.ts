@@ -1,6 +1,6 @@
 const API ='https://api.imdbapi.dev';
 
-export const searchMovies = async (query: string, limit = 50) => {
+export const searchMovies = async (query: string = '', limit = 50) => {
     const res = await fetch ('${API}/search/titles?query=${query}&limit=${limit}');
     return res.json();
 }
