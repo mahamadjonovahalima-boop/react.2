@@ -1,11 +1,22 @@
+import { useEffect, useState } from "react";
 import {useParams} from  "react-router-dom";
+import { getMovieById } from "../services/api";
 
 export default function MovieDetails() {
-    consts params = useParams();
+    const {id} = useParams();
+    const [movie , setMovies] = useState(null);
+
+    useEffect(() =>{
+        getMovieById(id).then(data => {
+            setMovies(data);
+        });
+    }, []);
 
     return(
         <div>
-            <h1>MovieDetails - {params.id}</h1>
+            <h1>{movie?.originalTitle}</h1>
+            <img src={movie?.primaryImage?.url} alt="" />
+            <p>{movie?.plot}</p>
         </div>
     );
 }
