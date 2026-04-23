@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { addToFavorites, getFavorites, removeFromFavorites } from "../services/favorites";
 import { useState } from "react";
 
-export default function MovieCard() {
+export default function MovieCard({movie}) {
     const [favorites , setFavorites] = useState(getFavorites())
     const handleFavorites = (id: string ) => {
         if (favorites.includes(id)) {
