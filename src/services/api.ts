@@ -15,3 +15,13 @@ export const getMovieById = async (id: string) => {
     return res.json();
 
 }
+
+export const gerMovieById = async (ids: string[]) => {
+    // const res = await fetch(`${API}/titles:batchGet?titleIds=${ids.join(',')}`);
+    // return res.json();
+
+    const movies = await Promise.all(
+        ids.map(movieId => getMovieById(movieId))
+    );
+    return movies;
+}
